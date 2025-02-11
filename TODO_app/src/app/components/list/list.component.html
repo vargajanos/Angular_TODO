@@ -1,0 +1,39 @@
+<h3>Taskok</h3> 
+<!-- Search Bar -->
+<input type="text" [(ngModel)]="searchTerm" placeholder="Search by Name" class="form-control mb-3"/>
+
+<table class="table table-striped table-hover"> 
+    <thead> 
+        <tr> 
+            <th>#</th> 
+            <th>Név</th> 
+            <th>Leírás</th> 
+            <th>Priority</th> 
+            <th>Dátum</th> 
+            <th>Kész</th> 
+            <th>Action</th> 
+        </tr> 
+    </thead> 
+    <tbody> 
+        <tr *ngFor="let task of filteredTasks(); let i = index"> 
+            <td>{{i + 1}}</td> 
+            <td>{{task.nev}}</td> 
+            <td>{{task.text}}</td> 
+            <td *ngIf="task.prio != false"> 
+                <i (click)="ChangePrio(i)" class="text-warning bi bi-star-fill"></i> 
+            </td> 
+            <td *ngIf="task.prio == false"> 
+                <i (click)="ChangePrio(i)" class="text-warning bi bi-star"></i> 
+            </td> 
+            <td *ngIf="task.done == true" style="background-color: gray;">{{task.date}}</td> 
+            <td *ngIf="task.done == false">{{task.date}}</td> 
+            <td *ngIf="task.done != false"> 
+                <i (click)="ChangeDone(i)" class="text-danger bi bi-check-circle-fill"></i> 
+            </td> 
+            <td *ngIf="task.done == false"> 
+                <i (click)="ChangeDone(i)" class="text-danger bi bi-check2-circle"></i> 
+            </td> 
+            <td><button class="btn btn-danger" (click)="torles(i)">X</button></td> 
+        </tr> 
+    </tbody> 
+</table>

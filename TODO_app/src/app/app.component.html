@@ -1,0 +1,11 @@
+<button (click)="toggleTheme()">
+  <i [class]="theme === 'dark' ? 'bi bi-sun fill' : 'bi bi-moon-stars-fill'"></i>
+</button>
+
+<div class="container">
+  <app-header [title]="title"></app-header>
+  <app-add-task (addItem)="addItemToList($event)"></app-add-task>
+  <app-list [tasks]="tasks" (taskIndex)="Delete($event)"></app-list>
+  <app-footer [author]="author" [company]="company"></app-footer>
+</div>
+
